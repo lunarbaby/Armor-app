@@ -38,23 +38,24 @@ try{
     $pdo = new PDO($dsn ,$dbUser,$dbPass);
     // set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+    echo "Connected successfully <br>";
 
     //insert data into table
     //prepare and bind parameters
     $stmt = $pdo->prepare("INSERT INTO gear (gear_color, gear_type, stat_one, stat_two, stat_three, stat_four) VAlUES (?, ?, ?, ?, ?, ?)");
-    $stmt->execute([
-        $gear_color, $gear_type, $stat_one, $stat_two, $stat_three, $stat_four]);
+    echo "Successfully prepared parameter <br>";
+    $stmt->execute([$color, $type, $one, $two, $three, $four]);
+    echo "Successfully bound parameter";
 
-     //insert a row
-    $gear_color = "red";
-    $gear_type = "orb";
-    $stat_one = "atk";
-    $stat_two = "hp";
-    $stat_three = "crit dmg";
-    $stat_four = "atk spd";
-    $stmt->execute();
-    echo "New record created successfully";
+    //insert a row
+    // $color = "red";
+    // $type = "orb";
+    // $one = "atk";
+    // $two = "hp";
+    // $three = "crit dmg";
+    // $four = "atk spd";
+    // $stmt->execute();
+    // echo "New record created successfully";
 } catch(PDOExeception $e){
     echo "Error: ".$e->getMessage();
 }
