@@ -42,7 +42,7 @@ try{
 
     //insert data into table
     //prepare and bind parameters
-    $stmt = $pdo->prepare("INSERT INTO gear (gear_color, gear_type, stat_one, stat_two, stat_three, stat_four) VAlUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO gear (color, gtype, one, two, three, four) VAlUES (?, ?, ?, ?, ?, ?)");
     echo "Successfully prepared parameter <br>";
     $stmt->execute([$color, $type, $one, $two, $three, $four]);
     echo "Successfully bound parameter";
@@ -56,6 +56,8 @@ try{
     // $four = "atk spd";
     // $stmt->execute();
     // echo "New record created successfully";
+
+
 } catch(PDOExeception $e){
     echo "Error: ".$e->getMessage();
 }
@@ -96,6 +98,8 @@ try{
 //     }
 // echo "</table>";
 
+
+  
 
 
 $pdo = null;
